@@ -22,6 +22,8 @@
         }
     }
     img {
+        -webkit-mask-image: -webkit-radial-gradient(50% 50%, #000 55%, transparent 60%);
+        -moz-mask-image: -moz-radial-gradient(circle at 50% 50%, #000 55%, transparent 60%);
         mask-image: radial-gradient(circle at 50% 50%, #000 55%, transparent 60%);
         margin: -30px 0;
     }
