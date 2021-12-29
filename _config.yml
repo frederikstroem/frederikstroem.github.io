@@ -1,0 +1,22 @@
+title: Frederik Holm Strøm
+description: My name is Frederik Holm Strøm, and I am currently studying Software Engineering at The University of Southern Denmark.
+timezone: Etc/UTC
+
+permalink: /:title
+date_format: "%Y-%m-%d"
+
+sass:
+  style: compressed
+
+defaults:
+  - scope:
+      path: assets/img
+    values:
+      image: true
+
+exclude:
+  - README.md
+  - run.sh
+
+plugins:
+  - jekyll-sitemap

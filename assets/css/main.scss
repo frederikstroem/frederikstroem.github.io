@@ -1,0 +1,187 @@
+---
+---
+@import "breakpoints";
+
+@import url(https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap);
+
+* {
+    font-family: 'Roboto Mono', monospace;
+    color: #00cc00;
+    font-size: 16px;
+    //text-shadow: 0px 0px 20px #00cc00,0px 0px 10px #00ff00;
+}
+
+a {
+    text-decoration: none;
+    &:hover {
+        color: #00ff00;
+        text-shadow: 0px 0px 20px #00cc00,0px 0px 10px #00ff00;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+html {
+    background-color: #000000;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    @media (max-width: $breakpoint-small - 1px) {
+        width: 100%;
+        padding-top: 10px;
+        > * {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+    @media (min-width: $breakpoint-small) {
+        margin: auto;
+        max-width: $breakpoint-small - 100px;
+    }
+    @media (min-width: $breakpoint-medium) {
+        max-width: $breakpoint-medium - 200px;
+    }
+    @media (min-width: $breakpoint-largest) {
+        max-width: $breakpoint-largest - 200px;
+    }
+}
+
+// Awesome glitch effect by Lucas Bebber.
+// Source: https://codepen.io/lbebber/pen/ypgql
+// I have only made my own small changes.
+.glitch{
+    position:relative;
+}
+@keyframes noise-anim{
+    $steps:20;
+    @for $i from 0 through $steps{
+        #{percentage($i*(1/$steps))}{
+            clip:rect(random(100)+px,9999px,random(100)+px,0);
+        }
+    }
+}
+.glitch:after{
+    content:attr(data-text);
+    position:absolute;
+    left:2px;
+    text-shadow:-1px 0 red;
+    top:0;
+    background:black;
+    overflow:hidden;
+    clip:rect(0,900px,0,0);
+    animation:noise-anim 3s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2{
+    $steps:20;
+    @for $i from 0 through $steps{
+        #{percentage($i*(1/$steps))}{
+            clip:rect(random(100)+px,9999px,random(100)+px,0);
+        }
+    }
+}
+.glitch:before{
+    content:attr(data-text);
+    position:absolute;
+    left:-2px;
+    text-shadow:1px 0 blue;
+    top:0;
+    background:black;
+    overflow:hidden;
+    clip:rect(0,900px,0,0);
+    animation:noise-anim-2 4s infinite linear alternate-reverse;
+}
+
+nav {
+    .navHeader {
+        display: block;
+        margin-bottom: 5px;
+        color: #00ff00;
+        font-size: 24px;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li {
+            display: inline-block;
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+        .active a {
+            text-decoration: underline;
+        }
+    }
+    margin-bottom: 30px;
+}
+
+.primary {
+    @media (min-width: $breakpoint-smallest) {
+        display: flex;
+    }
+}
+
+main {
+    flex: 1;
+    padding-bottom: 35px;
+    @media (min-width: $breakpoint-smallest) {
+        display: inline-block;
+    }
+    &,* {
+        color: #00aa00;
+        font-family: 'Roboto', sans-serif;
+    }
+    a {
+        color: #00ff00;
+    }
+}
+
+aside {
+    padding-bottom: 15px;
+    @media (min-width: $breakpoint-smallest) {
+        flex: 0 0 180px;
+        margin-left: 30px;
+        display: inline-block;
+    }
+    @media (min-width: $breakpoint-small) {
+        flex: 0 0 150px;
+        margin-left: 0px;
+        display: inline-block;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li:not(:last-child) {
+            margin-bottom: 3px;
+        }
+    }
+}
+
+footer {
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        @media (max-width: $breakpoint-smallest - 1px) {
+            li:not(:last-child) {
+                margin-bottom: 3px;
+            }
+        }
+        @media (min-width: $breakpoint-smallest) {
+            li {
+                display: inline-block;
+                &:not(:last-child) {
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+}

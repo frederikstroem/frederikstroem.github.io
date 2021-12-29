@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+    {% for stylesheet in page.stylesheets %}
+      <link rel="stylesheet" href="{{ stylesheet.path | relative_url }}" />
+    {% endfor %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.2.0/css/fork-awesome.min.css" integrity="sha512-aupidr80M36SeyviA/hZ2uEPnvt2dTJfyjm9y6z1MgaV13TgzmDiFdsH3cvSNG27mRIj7gJ2gNeg1HeySJyE3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <nav>
+      <a class="navHeader glitch" href="{{ 'index.html' | relative_url }}" data-text="Frederik Holm Strøm">Frederik Holm Strøm</a>
+      <ul>
+        {% for item in site.data.pages %}
+          <li class="{% if item.url == page.url %}active{% endif %}">
+            <a href="{{ item.url }}">{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <section class="primary">
+      <main>
+        {{ content }}
+      </main>
+      <aside>
+        <ul>
+          <li><a href="https://github.com/frederikstroem" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a></li>
+          <li><a href="https://fosstodon.org/@frederikstroem" target="_blank"><i class="fa fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+          <li><a href="https://matrix.to/#/@frederikstroem:matrix.org" target="_blank"><i class="fa fa-matrix-org" aria-hidden="true"></i> Matrix</a></li>
+          <li><a href="https://cdn.jsdelivr.net/gh/frederikstroem/frederikstroem.github.io/assets/pgp/9EA6C866165A3A8608BE3568EA2DC27E87A494F2.asc" target="_blank"><i class="fa fa-gnupg" aria-hidden="true"></i> PGP</a></li>
+        </ul>
+      </aside>
+    </section>
+    <footer>
+      <ul>
+        <li><a href="https://github.com/frederikstroem/frederikstroem.github.io" target="_blank"><i class="fa fa-code" aria-hidden="true"></i> Website source code</a></li>
+        <li><a href="{{ '/sitemap.xml' | relative_url }}" target="_blank"><i class="fa fa-sitemap" aria-hidden="true"></i> Sitemap</a></li>
+        <li><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No-JS friendly website</li>
+      </ul>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+---
+---
+@import "breakpoints";
+
+.introduction {
+    @media (min-width: $breakpoint-small) {
+        display: flex;
+        > * {
+            display: inline-block
+        };
+        > div {
+            width: 66%;
+            p {
+                &:first-of-type {
+                    margin-top: 0;
+                }
+                padding-right: 20px;
+            }
+        }
+        > img {
+            width: 33%;
+        }
+    }
+    img {
+        mask-image: radial-gradient(circle at 50% 50%, #000 55%, transparent 60%);
+        margin: -30px 0;
+    }
+}
