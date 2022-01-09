@@ -136,11 +136,20 @@ main {
         display: inline-block;
     }
     &,* {
-        color: #00aa00;
+        color: #00bb00;
         font-family: 'Roboto', sans-serif;
     }
     a {
         color: #00ff00;
+    }
+    h2, h3 {
+        color: #00ff00;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    h3 {
+        font-size: 18px;
     }
 }
 
