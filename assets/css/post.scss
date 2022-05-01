@@ -23,4 +23,15 @@ main {
             }
         }
     }
+    > div.content {
+        @media (min-width: $breakpoint-small) {
+            margin-right: 30px;
+        }
+        @media (min-width: $breakpoint-medium) {
+            margin-right: 35px;
+        }
+        @media (min-width: $breakpoint-largest) {
+            margin-right: 200px;
+        }
+    }
 }
