@@ -108,7 +108,7 @@ body {
 nav {
     .navHeader {
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         color: #00ff00;
         font-size: 24px;
     }
@@ -121,6 +121,7 @@ nav {
             &:not(:last-child) {
                 margin-right: 10px;
             }
+            margin-bottom: 10px;
         }
         .active a {
             text-decoration: underline;

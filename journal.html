@@ -1,0 +1,26 @@
+---
+layout: default
+title:  Journal
+description: Frederik Holm Strøm's public journal/blog.
+stylesheets:
+    - path: "/assets/css/journal.css"
+---
+{% for post in site.posts %}
+    <article>
+        <a href="{{ post.url }}">
+            <div class="title">
+                {{ post.title }}
+            </div>
+            <div class="metadata">
+                <div class="publicationDate">
+                    Published: {{ post.date | date: site.date_format }}
+                </div>
+                {% if post.last_modified %}
+                    <div class="modificationDate">
+                        Last modified: {{ post.last_modified | date: site.date_format }}
+                    </div>
+                {% endif %}
+            </div>
+        </a>
+    </article>
+{% endfor %}

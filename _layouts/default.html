@@ -9,6 +9,9 @@
     {% for stylesheet in page.stylesheets %}
       <link rel="stylesheet" href="{{ stylesheet.path | relative_url }}" />
     {% endfor %}
+    {% if page.is_post %}
+      <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}" />
+    {% endif %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.2.0/css/fork-awesome.min.css" integrity="sha512-aupidr80M36SeyviA/hZ2uEPnvt2dTJfyjm9y6z1MgaV13TgzmDiFdsH3cvSNG27mRIj7gJ2gNeg1HeySJyE3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
@@ -32,6 +35,7 @@
           <li><a href="https://keyoxide.org/9ea6c866165a3a8608be3568ea2dc27e87a494f2" target="_blank"><i class="fa fa-key-modern" aria-hidden="true"></i> Keyoxide</a></li>
           <li><a href="https://github.com/frederikstroem" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a></li>
           <li><a href="https://fosstodon.org/@frederikstroem" target="_blank"><i class="fa fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+          <li><a href="{{ '/feed.xml' | relative_url }}" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i> RSS</a></li>
           <li><a href="https://matrix.to/#/@frederikstroem:matrix.org" target="_blank"><i class="fa fa-matrix-org" aria-hidden="true"></i> Matrix</a></li>
           <li><a href="https://open.spotify.com/user/katofln" target="_blank"><i class="fa fa-spotify" aria-hidden="true"></i> Spotify</a></li>
           <li><a href="https://www.linkedin.com/in/frederikstroem/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>

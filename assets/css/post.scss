@@ -1,0 +1,26 @@
+---
+---
+@import "breakpoints";
+
+main {
+    h1.title {
+        color: #00ff00;
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+    div.metadata {
+        margin-bottom: 25px;
+        .item {
+            display: inline-block;
+        }
+        @media (max-width: $breakpoint-smallest) {
+            .item {
+                display: block;
+            }
+            .metadataSeperator {
+                display: none;
+            }
+        }
+    }
+}

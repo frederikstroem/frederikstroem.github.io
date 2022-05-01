@@ -1,0 +1,18 @@
+---
+---
+@import "breakpoints";
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 25px 50px; /* row-gap column gap */
+    article {
+        max-width: 285px;
+        .title {
+            color: #00ff00;
+            font-size: 18px;
+            padding-bottom: 5px;
+        }
+    }
+}

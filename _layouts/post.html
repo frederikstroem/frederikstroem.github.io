@@ -1,0 +1,19 @@
+---
+layout: default
+stylesheets:
+    - path: "/assets/css/post.css"
+---
+<h1 class="title">{{ page.title }}</h1>
+<div class="metadata">
+    <div class="item">
+        Published: {{ page.date | date: site.date_format }}
+    </div>
+    {% if page.last_modified %}
+        <span class="metadataSeperator"> — </span>
+        <div class="item">
+            Last modified: {{ page.last_modified | date: site.date_format }}
+        </div>
+    {% endif %}
+</div>
+
+{{ content }}

@@ -2,7 +2,7 @@ title: Frederik Holm Strøm
 description: My name is Frederik Holm Strøm, and I am currently studying Software Engineering at The University of Southern Denmark.
 timezone: Etc/UTC
 
-permalink: /:title
+permalink: /:year/:month/:title
 date_format: "%Y-%m-%d"
 
 sass:
@@ -19,4 +19,6 @@ exclude:
   - run.sh
 
 plugins:
+  - jekyll-feed
   - jekyll-sitemap
+  - jekyll-target-blank
