@@ -24,6 +24,10 @@ main {
         }
     }
     > div.content {
+        h2 {
+            padding-top: 10px;
+            margin-bottom: 0px;
+        }
         @media (min-width: $breakpoint-small) {
             margin-right: 30px;
         }
