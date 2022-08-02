@@ -11,4 +11,4 @@ This was done because it was easy, cheap and fun to do on Avalanche. Quite silly
 
 I made a dedicated page for this small project at [https://frederikstroem.com/NFTs/](https://frederikstroem.com/NFTs/).
 
-EDIT 2022-08-02: NFT's and metadata moved to [https://frederikstroem.com/nft-collection](https://frederikstroem.com/nft-collection).
+**EDIT 2022-08-02:** NFT's and metadata moved to [https://frederikstroem.com/nft-collection](https://frederikstroem.com/nft-collection).
