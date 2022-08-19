@@ -1,0 +1,47 @@
+---
+---
+@import "breakpoints";
+
+main {
+    word-wrap: break-word;
+    > h2 {
+        &:first-of-type {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        &:not(:first-of-type) {
+            //margin-bottom: 10px;
+        }
+    }
+    > p {
+        margin-bottom: 30px;
+    }
+    > article {
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        table {
+            max-width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            th, td {
+                text-align: center;
+                border: 1px dotted #00bb00;
+                word-break: break-all;
+                padding: 2px;
+                @media (min-width: $breakpoint-small) {
+                    padding: 5px;
+                }
+                @media (min-width: $breakpoint-medium) {
+                    padding: 15px;
+                }
+            }
+        }
+        &:first-of-type {
+            h3 {
+                margin-top: 10px;
+            }
+        }
+    }
+}
