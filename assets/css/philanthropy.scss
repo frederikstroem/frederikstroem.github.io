@@ -4,6 +4,12 @@
 
 main {
     word-wrap: break-word;
+    @media (min-width: $breakpoint-smallest) {
+        padding-right: 5px;
+    }
+    @media (min-width: $breakpoint-small) {
+        padding-right: 10px;
+    }
     > h2 {
         &:first-of-type {
             font-size: 24px;
@@ -18,8 +24,11 @@ main {
     }
     > article {
         h3 {
-            margin-top: 25px;
+            margin-top: 30px;
             margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 20px;
         }
         table {
             max-width: 100%;
