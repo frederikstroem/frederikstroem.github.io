@@ -3,7 +3,7 @@ layout: post
 is_post: true
 
 title: AI-generated rabbit hole
-#last_modified: YYYY-MM-DD
+last_modified: 2022-09-26
 ---
 Over the weekend, I fell into a small [AI-generated art creation](https://en.wikipedia.org/wiki/Text-to-image_model) rabbit hole.
 
@@ -13,7 +13,11 @@ I started out with the prompt `monstertruck on a rainbow in space`, I think it t
 
 <img src="https://cdn.jsdelivr.net/gh/frederikstroem/AI-generated-art/Midjourney/Midjourney_monstertruck_on_a_rainbow_in_space.png" alt="monstertruck on a rainbow in space" />
 
-Midjourney is cool and all, but it was nice getting a little more hands on. I spun up a [Stable Diffusion](https://github.com/CompVis/stable-diffusion) Jupyter notebook on my server equipped with and old but trusty Nvidia GeForce GTX 1070 Founders Edition, and started generating some images.
+The prompt `photorealistic dragon flying over city with sunset over` also gave an interesting result.
+
+<img src="https://cdn.jsdelivr.net/gh/frederikstroem/AI-generated-art/Midjourney/Midjourney_photorealistic_dragon_flying_over_city_with_sunset_over.png" alt="photorealistic dragon flying over city with sunset over" />
+
+Midjourney is cool and all, but it was nice getting a little more hands on, goodbye rate limiting...<br>I spun up a [Stable Diffusion](https://github.com/CompVis/stable-diffusion) Jupyter notebook on my server equipped with and old but trusty Nvidia GeForce GTX 1070 Founders Edition, and started generating some images.
 
 I got some interesting results with the prompt `cyberpunk`.
 
@@ -32,7 +36,6 @@ Seems the training set is a little biased towards Keanu Reeves. 🤣👌
 </div>
 
 My `mountain village, cyberpunk, snow, island, sunset` prompt also turned out pretty great!
-
 
 <div class="imgWrapper">
     <img src="https://cdn.jsdelivr.net/gh/frederikstroem/AI-generated-art/Stable-Diffusion/mountain_village,_cyberpunk,_snow,_island,_sunset/2022_09_25_21_03_mountain_village,_cyberpunk,_snow,_island,_sunset.png" alt="mountain village, cyberpunk, snow, island, sunset" />
