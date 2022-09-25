@@ -47,16 +47,20 @@ main {
             max-width: 100%;
         }
         img {
-            margin: 5px 0;
+            margin: 10px 0;
             display: block;
+            max-width: 100%;
         }
-        .imgWrapper {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            img {
-                max-width: 300px;
+        @media (min-width: $breakpoint-smallest) {
+            .imgWrapper {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                img {
+                    margin: 0;
+                    max-width: 300px;
+                }
             }
         }
         code {
