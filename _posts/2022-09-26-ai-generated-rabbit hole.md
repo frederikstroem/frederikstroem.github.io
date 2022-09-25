@@ -13,7 +13,7 @@ I started out with the prompt `monstertruck on a rainbow in space`, I think it t
 
 <img src="https://cdn.jsdelivr.net/gh/frederikstroem/AI-generated-art/Midjourney/Midjourney_monstertruck_on_a_rainbow_in_space.png" alt="monstertruck on a rainbow in space" />
 
-Midjourney is cool and all, but it was nice going a little more hands on. I spun up a [Stable Diffusion](https://github.com/CompVis/stable-diffusion) Jupyter notebook on my server equipped with and old but trusty Nvidia GeForce GTX 1070 Founders Edition, and started generating some images.
+Midjourney is cool and all, but it was nice getting a little more hands on. I spun up a [Stable Diffusion](https://github.com/CompVis/stable-diffusion) Jupyter notebook on my server equipped with and old but trusty Nvidia GeForce GTX 1070 Founders Edition, and started generating some images.
 
 I got some interesting results with the prompt `cyberpunk`.
 
