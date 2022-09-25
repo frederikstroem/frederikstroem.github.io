@@ -43,6 +43,9 @@ main {
         @media (min-width: $breakpoint-largest) {
             margin-right: 200px;
         }
+        img, video {
+            max-width: 100%;
+        }
         img {
             margin: 5px 0;
             display: block;
