@@ -5,7 +5,10 @@
 main {
     h1.title {
         color: #00ff00;
-        font-size: 24px;
+        font-size: 30px;
+        @media (min-width: $breakpoint-medium) {
+            font-size: 32px;
+        }
         margin-top: 0;
         margin-bottom: 5px;
     }
@@ -28,6 +31,9 @@ main {
             padding-top: 10px;
             margin-bottom: 0px;
         }
+        p {
+            line-height: 1.5;
+        }
         @media (min-width: $breakpoint-small) {
             margin-right: 30px;
         }
@@ -36,6 +42,26 @@ main {
         }
         @media (min-width: $breakpoint-largest) {
             margin-right: 200px;
+        }
+        img {
+            margin: 5px 0;
+            display: block;
+        }
+        .imgWrapper {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            img {
+                max-width: 300px;
+            }
+        }
+        code {
+            background-color: #343434;
+            color: #00ff00;
+            opacity: 0.8;
+            padding: 2px 5px;
+            border-radius: 6px;
         }
     }
 }
