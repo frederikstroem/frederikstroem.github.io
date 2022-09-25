@@ -2,7 +2,7 @@ title: Frederik Holm Strøm
 description: My name is Frederik Holm Strøm, and I am currently studying Software Engineering at The University of Southern Denmark.
 timezone: Etc/UTC
 
-permalink: /:year/:month/:title
+permalink: /journal/:title
 date_format: "%Y-%m-%d"
 
 sass:
