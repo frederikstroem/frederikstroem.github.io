@@ -2,29 +2,140 @@
 ---
 @import "breakpoints";
 
-.introduction {
+.about {
     @media (min-width: $breakpoint-small) {
         display: flex;
-        > * {
-            display: inline-block
-        };
-        .description {
-            width: 66%;
-            p {
-                padding-right: 20px;
+        align-items: flex-start;
+        .main, .curriculumVitae {
+            width: 50%;
+        }
+    }
+    h2 {
+        text-align: center;
+    }
+    .main {
+        .introduction {
+            display: flex;
+            align-items: center;
+            > * {
+                display: inline-block
+            };
+            .description {
+                width: 70%;
+                padding-right: 10px;
+            }
+            .photo {
+                width: 30%;
+            }
+            @media (min-width: $breakpoint-smallest) {
+                .description {
+                    width: 75%;
+                }
+                .photo {
+                    width: 25%;
+                }
+            }
+            @media (min-width: $breakpoint-small) {
+                .description {
+                    width: 70%;
+                }
+                .photo {
+                    width: 30%;
+                }
+            }
+            @media (min-width: $breakpoint-largest) {
+                .description {
+                    width: 75%;
+                }
+                .photo {
+                    width: 25%;
+                }
+            }
+            .description p:first-of-type {
+                margin-top: 0;
+            }
+            img {
+                border-radius: 5px;
+                object-fit: cover;
             }
         }
-        .photo {
-            width: 33%;
-            margin: -20px 0;
+        .primaryInterests {
+            > div {
+                margin-bottom: 10px;
+                @media (min-width: $breakpoint-smallest) {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                > div {
+                    margin: 3px 0;
+                    @media (max-width: $breakpoint-smallest - 1px) {
+                        max-width: 450px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    @media (min-width: $breakpoint-smallest) {
+                        width: 50%;
+                        > * {
+                            padding: 0 8px;
+                        }
+                    }
+                    > i {
+                        text-align: center;
+                        display: block;
+                        font-size: 40px;
+                        margin: 0 0 15px 0;
+                    }
+                    > h3 {
+                        text-align: center;
+                        margin: 0 0 15px 0;
+                        font-size: 18px;
+                    }
+                    > p {
+                        font-size: 16px;
+                    }
+                }
+            }
         }
     }
-    .description p:first-of-type {
-        margin-top: 0;
-    }
-    img {
-        -webkit-mask-image: -webkit-radial-gradient(50% 50%, #000 55%, transparent 60%);
-        -moz-mask-image: -moz-radial-gradient(circle at 50% 50%, #000 55%, transparent 60%);
-        mask-image: radial-gradient(circle at 50% 50%, #000 55%, transparent 60%);
+    .curriculumVitae {
+        td {
+            width: 50%;
+            > div {
+                padding: 40px 15px;
+                > i {
+                    margin: 0 0 15px 0;
+                    display: block;
+                    font-size: 40px;
+                }
+                > p:first-of-type {
+                    margin: 0 0 15px 0;
+                    color: #00ff00;
+                    font-weight: bold;
+                }
+                > p:nth-of-type(2) {
+                    margin: 0 0 2px 0;
+                    color: #00ff00;
+                }
+                > p:last-of-type {
+                    margin: 0;
+                    font-style: italic;
+                }
+            }
+        }
+        td:first-of-type {
+            border-width: 0 2px 2px 0;
+            border-style: solid;
+            border-image:
+                linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0),
+                    #00bb00 25%,
+                    #00bb00 75%,
+                    rgba(0, 0, 0, 0)
+            ) 1 100%;
+            > div {
+                text-align: right;
+            }
+        }
     }
 }
