@@ -8,7 +8,7 @@ main {
     align-items: flex-start;
     gap: 25px 50px; /* row-gap column gap */
     article {
-        max-width: 285px;
+        width: 285px;
         .title {
             color: #00ff00;
             font-size: 18px;

@@ -8,7 +8,7 @@
     font-family: 'Roboto Mono', monospace;
     color: #00cc00;
     font-size: 18px;
-    @media (min-width: $breakpoint-medium) {
+    @media (min-width: $breakpoint-large) {
         font-size: 20px;
     }
     //text-shadow: 0px 0px 20px #00cc00,0px 0px 10px #00ff00;
@@ -35,7 +35,7 @@ body {
     margin: 0;
     padding-top: 15px;
     padding-bottom: 20px;
-    @media (max-width: $breakpoint-small - 1px) {
+    @media (max-width: $breakpoint-medium - 1px) {
         width: 100%;
         padding-top: 10px;
         > * {
@@ -43,12 +43,12 @@ body {
             margin-right: 10px;
         }
     }
-    @media (min-width: $breakpoint-small) {
-        margin: auto;
-        max-width: $breakpoint-small - 100px;
-    }
     @media (min-width: $breakpoint-medium) {
-        max-width: $breakpoint-medium - 200px;
+        margin: auto;
+        max-width: $breakpoint-medium - 100px;
+    }
+    @media (min-width: $breakpoint-large) {
+        max-width: $breakpoint-large - 200px;
     }
     @media (min-width: $breakpoint-largest) {
         max-width: $breakpoint-largest - 200px;
@@ -134,7 +134,7 @@ nav {
 }
 
 .primary {
-    @media (min-width: $breakpoint-smallest) {
+    @media (min-width: $breakpoint-small) {
         display: flex;
     }
 }
@@ -142,7 +142,7 @@ nav {
 main {
     flex: 1;
     padding-bottom: 35px;
-    @media (min-width: $breakpoint-smallest) {
+    @media (min-width: $breakpoint-small) {
         display: inline-block;
     }
     &,* {
@@ -165,12 +165,12 @@ main {
 
 aside {
     padding-bottom: 15px;
-    @media (min-width: $breakpoint-smallest) {
+    @media (min-width: $breakpoint-small) {
         flex: 0 0 180px;
         margin-left: 30px;
         display: inline-block;
     }
-    @media (min-width: $breakpoint-small) {
+    @media (min-width: $breakpoint-medium) {
         flex: 0 0 150px;
         margin-left: 0px;
         display: inline-block;
@@ -190,12 +190,12 @@ footer {
         list-style-type: none;
         margin: 0;
         padding: 0;
-        @media (max-width: $breakpoint-smallest - 1px) {
+        @media (max-width: $breakpoint-small - 1px) {
             li:not(:last-child) {
                 margin-bottom: 3px;
             }
         }
-        @media (min-width: $breakpoint-smallest) {
+        @media (min-width: $breakpoint-small) {
             li {
                 display: inline-block;
                 &:not(:last-child) {

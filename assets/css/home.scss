@@ -3,7 +3,7 @@
 @import "breakpoints";
 
 .about {
-    @media (min-width: $breakpoint-small) {
+    @media (min-width: $breakpoint-medium) {
         display: flex;
         align-items: flex-start;
         .main, .curriculumVitae {
@@ -15,19 +15,33 @@
     }
     .main {
         .introduction {
-            display: flex;
-            align-items: center;
-            > * {
-                display: inline-block
-            };
-            .description {
-                width: 70%;
-                padding-right: 10px;
-            }
-            .photo {
-                width: 30%;
-            }
             @media (min-width: $breakpoint-smallest) {
+                display: flex;
+                align-items: center;
+                > * {
+                    display: inline-block
+                };
+                .description {
+                    order: 1;
+                    width: 70%;
+                    padding-right: 10px;
+                }
+                .photo {
+                    order: 2;
+                    width: 30%;
+                    padding-left: 10px;
+                }
+            }
+            @media (max-width: $breakpoint-smallest - 1px) {
+                .photo {
+                    max-width: 350px;
+                    margin: 0 auto 15px auto;
+                }
+                .description {
+                    margin-bottom: 25px;
+                }
+            }
+            @media (min-width: $breakpoint-small) {
                 .description {
                     width: 75%;
                 }
@@ -35,7 +49,7 @@
                     width: 25%;
                 }
             }
-            @media (min-width: $breakpoint-small) {
+            @media (min-width: $breakpoint-medium) {
                 .description {
                     width: 70%;
                 }
@@ -60,14 +74,16 @@
             }
         }
         .primaryInterests {
+            @media (max-width: $breakpoint-smallest - 1px) {
+                margin-bottom: 35px;
+            }
             > div {
-                margin-bottom: 10px;
                 @media (min-width: $breakpoint-smallest) {
                     display: flex;
                     flex-wrap: wrap;
                 }
                 > div {
-                    margin: 3px 0;
+                    margin: 5px 0;
                     @media (max-width: $breakpoint-smallest - 1px) {
                         max-width: 450px;
                         margin-left: auto;

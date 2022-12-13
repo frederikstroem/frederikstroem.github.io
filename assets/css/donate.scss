@@ -17,14 +17,14 @@ textarea {
 
 .cryptocurrencies {
     > div {
-        @media (min-width: $breakpoint-medium) {
+        @media (min-width: $breakpoint-large) {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             row-gap: 20px;
         }
         > div {
-            @media (max-width: $breakpoint-medium - 1px) {
+            @media (max-width: $breakpoint-large - 1px) {
                 display: block;
                 margin: auto;
                 &:not(:last-of-type) {
@@ -32,10 +32,10 @@ textarea {
                 }
             }
             max-width: 600px;
-            @media (min-width: $breakpoint-smallest) {
+            @media (min-width: $breakpoint-small) {
                 max-width: 500px;
             }
-            @media (min-width: $breakpoint-medium) {
+            @media (min-width: $breakpoint-large) {
                 max-width: 400px;
             }
             * {
@@ -51,7 +51,7 @@ textarea {
             }
             textarea {
                 height: 46px;
-                @media (min-width: $breakpoint-medium) {
+                @media (min-width: $breakpoint-large) {
                     height: 65px;
                 }
             }
