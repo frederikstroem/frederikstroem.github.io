@@ -12,6 +12,10 @@
     }
     h2 {
         text-align: center;
+        font-size: 22px;
+        @media (min-width: $breakpoint-large) {
+            font-size: 24px;
+        }
     }
     .main {
         .introduction {
@@ -103,11 +107,8 @@
                     > h3 {
                         text-align: center;
                         margin: 0 0 15px 0;
-                        font-size: 18px;
-                    }
-                    > p {
-                        &, * {
-                            font-size: 16px;
+                        @media (min-width: $breakpoint-large) {
+                            font-size: 22px;
                         }
                     }
                 }

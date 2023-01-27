@@ -35,7 +35,7 @@ body {
     margin: 0;
     padding-top: 15px;
     padding-bottom: 20px;
-    @media (max-width: $breakpoint-medium - 1px) {
+    @media (max-width: $breakpoint-large - 1px) {
         width: 100%;
         padding-top: 10px;
         > * {
@@ -43,12 +43,9 @@ body {
             margin-right: 10px;
         }
     }
-    @media (min-width: $breakpoint-medium) {
-        margin: auto;
-        max-width: $breakpoint-medium - 100px;
-    }
     @media (min-width: $breakpoint-large) {
-        max-width: $breakpoint-large - 200px;
+        margin: auto;
+        max-width: $breakpoint-large - 100px;
     }
     @media (min-width: $breakpoint-largest) {
         max-width: $breakpoint-largest - 200px;
