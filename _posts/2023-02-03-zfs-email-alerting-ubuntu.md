@@ -3,12 +3,13 @@ layout: post
 is_post: true
 
 title: Setup monthly ZFS scrubs with email alerts on Ubuntu Server 22.04
+last_modified: 2023-02-03
 ---
-## Prerequisites
-ZFS installed and configured ([install ZFS on Ubuntu Server](https://ubuntu.com/tutorials/setup-zfs-storage-pool)).
-
 ## A preliminary note of caution
 I would advice against using email alerting for anything industry or mission critical, as email has issues with reliability among other things.
+
+## Prerequisites
+ZFS is installed and configured, ([install ZFS on Ubuntu Server](https://ubuntu.com/tutorials/setup-zfs-storage-pool)).
 
 ## Install msmtp and dependencies
 [msmtp](https://marlam.de/msmtp/) is an SMTP client that is simple and easy to configure.
