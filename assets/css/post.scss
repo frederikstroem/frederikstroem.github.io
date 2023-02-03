@@ -33,6 +33,7 @@ main {
         }
         p {
             line-height: 1.5;
+            margin: 10px 0;
         }
         @media (min-width: $breakpoint-medium) {
             margin-right: 30px;
@@ -64,11 +65,26 @@ main {
             }
         }
         code {
-            background-color: #343434;
-            color: #00ff00;
-            opacity: 0.8;
+            background-color: #2f2e2e;
+            *, & {
+                color: #00dd00;
+            }
             padding: 2px 5px;
             border-radius: 6px;
+        }
+        pre {
+            background-color: #2f2e2e;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+            code {
+                background-color: transparent;
+                padding: 0;
+                border-radius: 0;
+            }
+        }
+        strong {
+            color: #00ff00;
         }
     }
 }
