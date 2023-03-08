@@ -117,6 +117,7 @@
     }
     .curriculumVitae {
         td {
+            vertical-align:top;
             width: 50%;
             > div {
                 padding: 40px 15px;
@@ -134,7 +135,7 @@
                     margin: 0 0 2px 0;
                     color: #00ff00;
                 }
-                > p:last-of-type {
+                > p:nth-of-type(3) {
                     margin: 0;
                     font-style: italic;
                 }
@@ -154,6 +155,9 @@
             > div {
                 text-align: right;
             }
+        }
+        td:nth-of-type(2) {
+            padding-top: 125px;
         }
     }
 }
