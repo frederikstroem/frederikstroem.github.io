@@ -52,10 +52,13 @@ body {
     }
 }
 
-// Fix monospace not being respected.
-.fa.fa-key-modern {
-    margin-right: -2px;
-    margin-left: -1px;
+// Fix 𝕏 to align with Font Awesome icons.
+.xSocialFix {
+    display: inline-block;
+    text-align: center;
+    width: 1.25em;
+    font-weight: 900;
+    font-family: "Font Awesome 6 Free";
 }
 
 // Awesome glitch effect by Lucas Bebber.
