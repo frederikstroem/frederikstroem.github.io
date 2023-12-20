@@ -17,6 +17,7 @@ defaults:
 exclude:
   - README.md
   - run.sh
+  - update.sh
 
 plugins:
   - jekyll-feed
