@@ -3,7 +3,5 @@
   "extends": [
     "config:recommended"
   ],
-  "bundler": {
-    "rangeStrategy": "update-lockfile"
-  }
+  "rangeStrategy": "update-lockfile"
 }
