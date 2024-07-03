@@ -4,8 +4,7 @@ if ! bundle exec jekyll serve
 then
     # If command fails, give some hints...
     echo '----------------'
-    echo 'Well hello there, it looks like you are having some trouble!'
-    echo 'Remember to run "bundle install" first.'
-    echo 'As well as "bundle update github-pages" to update the github-pages gem.'
+    echo 'Make sure to have an updated version of Ruby installed, rbenv is recommended: https://github.com/rbenv/rbenv'
+    echo 'Remember to run "bundle install" before first run.'
     echo 'If all else fails, see https://github.com/github/pages-gem'
 fi
