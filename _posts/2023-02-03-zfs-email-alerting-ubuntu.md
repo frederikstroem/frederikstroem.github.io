@@ -1,6 +1,5 @@
 ---
 layout: post
-is_post: true
 
 title: Setup monthly ZFS scrubs with email alerts on Ubuntu Server 22.04
 last_modified: 2023-02-03

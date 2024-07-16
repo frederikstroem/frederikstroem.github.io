@@ -1,18 +1,13 @@
----
----
-@import "breakpoints";
+@use "./base";
 
-main {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 25px 50px; /* row-gap column gap */
-    article {
-        width: 285px;
-        .title {
-            color: #00ff00;
-            font-size: 18px;
-            padding-bottom: 5px;
-        }
-    }
-}
+//
+// Bulma imports.
+//
+// Utilities.
+@use "bulma/sass/utilities/mixins";
+
+// Layout.
+@use "bulma/sass/layout/media";
+
+// Elements.
+@use "bulma/sass/elements/box";

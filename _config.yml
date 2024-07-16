@@ -2,11 +2,20 @@ title: Frederik Holm Strøm
 description: My name is Frederik Holm Strøm, and I am currently studying Software Engineering at The University of Southern Denmark.
 timezone: Etc/UTC
 
+email: contact@frederikstroem.com
+
 permalink: /journal/:title
 date_format: "%Y-%m-%d"
 
-sass:
-  style: compressed
+# TODO: Eventually migrate to Jekyll-compiled Sass using @use rules with Bulma once github-pages have stable Dart Sass support via jekyll-sass-converter? See:
+# - https://github.com/github/pages-gem/issues/813
+# - https://github.com/jekyll/jekyll-sass-converter/issues/105
+# - https://github.com/jekyll/jekyll-sass-converter/issues/116
+# - https://stackoverflow.com/questions/61326061/does-jekyll-support-use-sass-statement
+# - https://sass-lang.com/documentation/at-rules/use/
+# - https://sass-lang.com/documentation/at-rules/import/
+#sass:
+#  style: compressed
 
 defaults:
   - scope:

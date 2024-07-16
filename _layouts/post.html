@@ -1,19 +1,18 @@
 ---
 layout: default
+stylesheet_path: "/assets/css/post.min.css"
 ---
-<h1 class="title">{{ page.title }}</h1>
-<div class="metadata">
-    <div class="item">
-        Published: {{ page.date | date: site.date_format }}
+<section class="section mt-1">
+    <div class="container">
+        <h1 class="title">{{ page.title }}</h1>
+        <h2 class="subtitle">
+            Published: {{ page.date | date: site.date_format }}{% if page.last_modified %} · Last modified: {{ page.last_modified | date: site.date_format }}{% endif %}
+        </h2>
     </div>
-    {% if page.last_modified %}
-        <span class="metadataSeperator"> — </span>
-        <div class="item">
-            Last modified: {{ page.last_modified | date: site.date_format }}
-        </div>
-    {% endif %}
-</div>
+</section>
 
-<div class="content">
-    {{ content }}
+<div class="container container-touch-padding-fix mb-6">
+    <div class="content">
+        {{ content }}
+    </div>
 </div>

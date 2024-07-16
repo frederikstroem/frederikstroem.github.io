@@ -1,10 +1,8 @@
 ---
 layout: post
-is_post: true
 
 title: SOUNDBOKS with Spotify Connect using Raspotify and Home Assistant
 ---
-
 *I dedicate this journal post to the public domain under the [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/). I waive all rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.*
 
 ![SOUNDBOKS 2 connected to a Raspberry Pi 3 running Raspotify](https://cdn.jsdelivr.net/gh/frederikstroem/frederikstroem.github.io/assets/img/2024-06-14-soundboks-with-spotify-connect.jpg)

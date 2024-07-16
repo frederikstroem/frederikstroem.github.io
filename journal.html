@@ -1,26 +1,37 @@
 ---
 layout: default
-title:  Journal
+stylesheet_path: "/assets/css/journal.min.css"
+title: Journal
 description: Frederik Holm Strøm's public journal/blog.
-stylesheets:
-    - path: "/assets/css/journal.css"
 ---
-{% for post in site.posts %}
-    <article>
-        <a href="{{ post.url }}">
-            <div class="title">
-                {{ post.title }}
-            </div>
-            <div class="metadata">
-                <div class="publicationDate">
-                    Published: {{ post.date | date: site.date_format }}
-                </div>
-                {% if post.last_modified %}
-                    <div class="modificationDate">
-                        Last modified: {{ post.last_modified | date: site.date_format }}
+<div class="container container-touch-padding-fix mt-4 mb-6">
+    <div class="columns is-multiline mb-2">
+        {% for post in site.posts %}
+            <div class="
+                    column
+                    is-full-tablet
+                    is-half-desktop
+                    is-one-third-fullhd
+                "
+            >
+                <a href="{{ post.url }}">
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left"></div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p class="has-text-text">
+                                        <strong class="has-text-text-bold">{{ post.title }}</strong>
+                                        <br />
+                                        <small>Published: {{ post.date | date: site.date_format }}{% if post.last_modified %} · Last modified: {{ post.last_modified | date: site.date_format }}{% endif %}</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right"></div>
+                        </article>
                     </div>
-                {% endif %}
+                </a>
             </div>
-        </a>
-    </article>
-{% endfor %}
+        {% endfor %}
+    </div>
+</div>

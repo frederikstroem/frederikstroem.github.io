@@ -1,0 +1,151 @@
+//
+// Bulma imports.
+//
+// Base.
+@use "bulma/sass/base";
+
+// Utilities.
+@use "bulma/sass/utilities/initial-variables" as iv;
+@use "bulma/sass/utilities/css-variables" as cv;
+@use "bulma/sass/utilities/derived-variables" as dv;
+@use "bulma/sass/utilities/mixins";
+
+// Themes.
+@use "bulma/sass/themes";
+@use "bulma/sass/themes/setup";
+@use "bulma/sass/themes/dark";
+
+// Helpers.
+@use "bulma/sass/helpers";
+
+// Grid.
+@use "bulma/sass/grid";
+
+// Layout.
+$container-touch-padding-fix: 0.75rem;  // Padding for content in container when container is not fullwidth.
+@use "bulma/sass/layout/container";
+$section-padding: 0.75rem;
+@use "bulma/sass/layout/section" with (
+  $section-padding: $section-padding,
+  $section-padding-desktop: $section-padding
+);
+@use "bulma/sass/layout/footer";
+
+// Components.
+@use "bulma/sass/components/navbar";
+@use "bulma/sass/components/message";
+
+// Elements.
+@use "bulma/sass/elements/button" with (
+  $button-text-decoration: none
+);
+@use "bulma/sass/elements/title";
+@use "bulma/sass/elements/content";
+
+// OLED theme is dark theme with black background, largely just a derivative of the Bulma dark theme.
+// https://bulma.io/documentation/features/dark-mode/
+
+// The main lightness of the OLED theme
+$scheme-main-l: 0%;
+$background-l: $scheme-main-l + 3%;
+$text-l: 80%;
+
+// The main OLED scheme color, used to make calculations
+$scheme-main: hsl(iv.$scheme-h, iv.$scheme-s, $scheme-main-l);
+$background: hsl(iv.$scheme-h, iv.$scheme-s, $background-l);
+$text: hsl(iv.$scheme-h, iv.$scheme-s, $text-l);
+
+// Define the OLED theme
+@include cv.bulma-theme($name: "oled") {
+  // Use the dark theme as a base.
+  @include dark.dark-theme;
+
+  // Override the background color to black.
+  @include cv.register-vars(
+    (
+      "scheme-main-l": $scheme-main-l,
+      "scheme-main-bis-l": $scheme-main-l + 2%,
+      "scheme-main-ter-l": $scheme-main-l + 4%,
+      "background-l": $background-l,
+      "text-l": $text-l
+    )
+  );
+
+  // Setup the new OLED theme.
+  @include setup.setup-theme;
+
+  // Required: update the "on scheme" colors since the main scheme color is changed
+  // from white (100% lightness)
+  // to black (0% lightness in this case)
+  @each $name, $color in dv.$colors {
+    @if type-of($color) == "color" {
+      @include cv.generate-on-scheme-colors($name, $color, $scheme-main);
+    }
+    // Skip undefined colors, this is commented out because it generates a lot of noise.
+    // } @else {
+    //   @warn "Skipping $name: $color is not a color or is undefined.";
+    // }
+  }
+}
+
+// @keyframes navbarItemAnimation {
+//   from {
+//     opacity: 0;
+//     transform: translateX(-20px);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateX(0);
+//   }
+// }
+
+.navbar-menu {
+  .navbar-item {
+      &.has-dropdown {
+        .navbar-dropdown {
+          display: none;
+        }
+        &.is-active {
+          .navbar-dropdown {
+            display: block;
+          }
+        }
+    }
+
+    // // Add mobile animations.
+    // // https://bulma.io/documentation/start/responsiveness/
+    // @media (max-width: 1023px) {
+    //   opacity: 0; // Initially hide the items
+    //   animation: navbarItemAnimation 0.5s forwards;
+    //   // Delay each item
+    //   @for $i from 1 through 10 {
+    //     &:nth-child(#{$i}) {
+    //       animation-delay: $i * 0.1s;
+    //     }
+    //   }
+    // }
+  }
+}
+
+// Make website usable without JavaScript.
+// https://developer.mozilla.org/en-US/docs/Web/CSS/@media/scripting
+@media (scripting: none) {
+  // Expand the navbar menu and dropdowns.
+  .navbar-menu, .navbar-dropdown {
+    display: block !important;
+  }
+  // Hide the navbar burger as it is unuseable without JavaScript.
+  .navbar-burger {
+    display: none !important;
+  }
+}
+
+// Add padding when the container is not fullwidth.
+.container-touch-padding-fix {
+  @include mixins.touch {
+    // Styles applied
+    // below $desktop
+    padding-left: $container-touch-padding-fix;
+    padding-right: $container-touch-padding-fix;
+  }
+}

@@ -2,50 +2,164 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-    {% for stylesheet in page.stylesheets %}
-      <link rel="stylesheet" href="{{ stylesheet.path | relative_url }}" />
-    {% endfor %}
-    {% if page.is_post %}
-      <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% if page.stylesheet_path %}
+      <link rel="stylesheet" href="{{ page.stylesheet_path | relative_url }}" />
+    {% else %}
+      <link rel="stylesheet" href="{{ layout.stylesheet_path | relative_url }}" />
     {% endif %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <nav>
-      <a class="navHeader glitch" href="{{ '/' | relative_url }}" data-text="Frederik Holm Strøm">Frederik Holm Strøm</a>
-      <ul>
-        {% for item in site.data.pages %}
-          <li class="{% if item.url == page.url %}active{% endif %}">
-            <a href="{{ item.url }}">{{ item.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="{{ '/' | relative_url }}" data-text="Frederik Holm Strøm">Frederik Holm Strøm</a>
+
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-start">
+            {% for item in site.data.pages %}
+              <a class="navbar-item {% if item.url == page.url %}is-selected{% endif %}" href="{{ item.url }}">{{ item.title }}</a>
+            {% endfor %}
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown">
+              <a class="navbar-link">
+                Theme
+              </a>
+              <div class="navbar-dropdown is-right">
+                <a class="navbar-item is-selected" id="themeChoiceSystem">
+                  System
+                </a>
+                <a class="navbar-item" id="themeChoiceLight">
+                  Light
+                </a>
+                <a class="navbar-item" id="themeChoiceDark">
+                  Dark
+                </a>
+                <a class="navbar-item" id="themeChoiceOled">
+                  OLED
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
-    <section class="primary">
-      <main>
-        {{ content }}
-      </main>
-      <aside>
-        <ul>
-          <li><a href="https://keyoxide.org/9ea6c866165a3a8608be3568ea2dc27e87a494f2" target="_blank"><i class="fa-solid fa-key fa-fw" aria-hidden="true"></i> Keyoxide</a></li>
-          <li><a href="mailto:contact@frederikstroem.com" target="_blank"><i class="fa fa-at fa-fw" aria-hidden="true"></i> Email</a></li>
-          <li><a href="https://github.com/frederikstroem" target="_blank"><i class="fa-brands fa-github fa-fw" aria-hidden="true"></i> GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/frederikstroem/" target="_blank"><i class="fa-brands fa-linkedin fa-fw" aria-hidden="true"></i> LinkedIn</a></li>
-          <li><a href="https://open.spotify.com/user/katofln" target="_blank"><i class="fa-brands fa-spotify fa-fw" aria-hidden="true"></i> Spotify</a></li>
-          <li><a href="{{ '/feed.xml' | relative_url }}" target="_blank"><i class="fa-solid fa-square-rss fa-fw" aria-hidden="true"></i> RSS</a></li>
-        </ul>
-      </aside>
-    </section>
-    <footer>
-      <ul>
-        <li><a href="https://github.com/frederikstroem/frederikstroem.github.io" target="_blank"><i class="fa-solid fa-code fa-fw" aria-hidden="true"></i> Website source code</a></li>
-        <li><a href="{{ '/sitemap.xml' | relative_url }}" target="_blank"><i class="fa-solid fa-sitemap fa-fw" aria-hidden="true"></i> Sitemap</a></li>
-        <li><a href="https://stats.uptimerobot.com/w5LxmHv3Gl" target="_blank"><i class="fa-solid fa-heartbeat fa-fw" aria-hidden="true"></i> Uptime</a></li>
-      </ul>
+    <div id="messages" class="container container-touch-padding-fix">
+      <article id="cookie-notice" class="message my-2 is-hidden">
+        <div class="message-header">
+          <p><i class="fas fa-cookie-bite"></i> Use of Cookies</p>
+          <button class="delete cookie-reject" aria-label="delete"></button>
+        </div>
+        <div class="message-body">
+          By pressing "Accept", you agree to the use of first-party cookies to save your theme preference and the acknowledgement of this cookie notice. If you choose to press "Reject" or the "X" in the top right corner, no cookies will be saved. See <a href="https://eur-lex.europa.eu/eli/dir/2009/136/oj" target="_blank">Directive 2009/136/EC</a> for more information.
+          <div class="buttons is-centered mt-3">
+            <button class="button is-success cookie-accept">
+              <span class="icon is-small">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Accept</span>
+            </button>
+            <button class="button is-danger cookie-reject">
+              <span class="icon is-small">
+                <i class="fas fa-times"></i>
+              </span>
+              <span>Reject</span>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+    <main>
+      {{ content }}
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <div class="buttons is-centered my-3">
+              <a class="button" href="mailto:{{ site.email }}" target="_blank">
+                <span class="icon is-small">
+                  <i class="fas fa-at"></i>
+                </span>
+                <span>Email</span>
+              </a>
+              <a class="button has-background-link-70 is-dark" href="https://keyoxide.org/9ea6c866165a3a8608be3568ea2dc27e87a494f2" target="_blank">
+                <span class="icon is-small">
+                  <i class="fas fa-key"></i>
+                </span>
+                <span>Keyoxide</span>
+              </a>
+              <a class="button is-dark" href="https://github.com/frederikstroem" target="_blank">
+                <span class="icon is-small">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>GitHub</span>
+              </a>
+              <a class="button is-link" href="https://www.linkedin.com/in/frederikstroem/" target="_blank">
+                <span class="icon is-small">
+                  <i class="fab fa-linkedin"></i>
+                </span>
+                <span>LinkedIn</span>
+              </a>
+              <a class="button is-warning" href="{{ '/feed.xml' | relative_url }}" target="_blank">
+                <span class="icon is-small">
+                  <i class="fas fa-rss-square"></i>
+                </span>
+                <span>RSS</span>
+              </a>
+            </div>
+          </div>
+          <div class="column">
+            <div class="buttons is-centered my-3">
+              <a
+                class="button is-text"
+                href="https://github.com/frederikstroem/frederikstroem.github.io"
+                target="_blank"
+              >
+                <span class="icon is-small">
+                  <i class="fas fa-code"></i>
+                </span>
+                <span>Source Code</span>
+              </a>
+              <a
+                class="button is-text"
+                href="{{ '/sitemap.xml' | relative_url }}"
+                target="_blank"
+              >
+                <span class="icon is-small">
+                  <i class="fas fa-sitemap"></i>
+                </span>
+                <span>Sitemap</span>
+              </a>
+              <a
+                class="button is-text"
+                href="https://stats.uptimerobot.com/w5LxmHv3Gl"
+                target="_blank"
+              >
+                <span class="icon is-small">
+                  <i class="fas fa-heartbeat"></i>
+                </span>
+                <span>Uptime</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
+
+    <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
   </body>
 </html>

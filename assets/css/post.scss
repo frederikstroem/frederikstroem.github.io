@@ -1,90 +1,20 @@
----
----
-@import "breakpoints";
+@use "./base";
 
-main {
-    h1.title {
-        color: #00ff00;
-        font-size: 30px;
-        @media (min-width: $breakpoint-large) {
-            font-size: 32px;
-        }
-        margin-top: 0;
-        margin-bottom: 5px;
-    }
-    div.metadata {
-        margin-bottom: 25px;
-        .item {
-            display: inline-block;
-        }
-        @media (max-width: $breakpoint-small) {
-            .item {
-                display: block;
-            }
-            .metadataSeperator {
-                display: none;
-            }
-        }
-    }
-    > div.content {
-        h2 {
-            padding-top: 10px;
-            margin-bottom: 0px;
-        }
-        p {
-            line-height: 1.5;
-            margin: 10px 0;
-        }
-        @media (min-width: $breakpoint-medium) {
-            margin-right: 30px;
-        }
-        @media (min-width: $breakpoint-large) {
-            margin-right: 35px;
-        }
-        @media (min-width: $breakpoint-largest) {
-            margin-right: 200px;
-        }
-        img, video {
-            max-width: 100%;
-        }
-        img {
-            margin: 10px 0;
-            display: block;
-            max-width: 100%;
-        }
-        @media (min-width: $breakpoint-small) {
-            .imgWrapper {
-                width: 100%;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                img {
-                    margin: 0;
-                    max-width: 300px;
-                }
-            }
-        }
-        code {
-            background-color: #2f2e2e;
-            *, & {
-                color: #00dd00;
-            }
-            padding: 2px 5px;
-            border-radius: 6px;
-        }
-        pre {
-            background-color: #2f2e2e;
-            padding: 10px;
-            border-radius: 6px;
-            overflow-x: auto;
-            code {
-                background-color: transparent;
-                padding: 0;
-                border-radius: 0;
-            }
-        }
-        strong {
-            color: #00ff00;
-        }
+//
+// Bulma imports.
+//
+// Syntax highlighting.
+@use "./syntax-highlighting";
+
+// Default to github-dark syntax highlighting theme.
+@include syntax-highlighting.github-dark;
+// Apply github-light syntax highlighting theme for light color schemes.
+[data-theme=light] {
+    @include syntax-highlighting.github-light;
+}
+// Also apply github-light syntax highlighting theme using media query if another theme is not set using data-theme.
+@media (prefers-color-scheme: light) {
+    :not([data-theme]) {
+        @include syntax-highlighting.github-light;
     }
 }
