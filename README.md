@@ -1,4 +1,8 @@
 # [frederikstroem.com](https://frederikstroem.com) Source Code
+[![Renovate Enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg?logo=renovate)](https://renovatebot.com/)
+[![pages-build-deployment](https://img.shields.io/github/actions/workflow/status/frederikstroem/frederikstroem.github.io/pages%2Fpages-build-deployment?logo=github&label=pages-build-deployment)](https://github.com/frederikstroem/frederikstroem.github.io/actions/workflows/pages/pages-build-deployment)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/frederikstroem/frederikstroem.github.io/github-code-scanning%2Fcodeql?logo=github&label=github-code-scanning)](https://github.com/frederikstroem/frederikstroem.github.io/actions/workflows/github-code-scanning/codeql)
+
 The source code for my personal web page [frederikstroem.com](https://frederikstroem.com)
 
 **3rd party tools, libraries and services used in this project:**
