@@ -5,7 +5,7 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["font-awesome"],
+      "matchDepNames": ["font-awesome"],
       "allowedVersions": "<6.0.0"
     }
   ]
