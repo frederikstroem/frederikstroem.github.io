@@ -138,6 +138,10 @@ $text: hsl(iv.$scheme-h, iv.$scheme-s, $text-l);
   .navbar-burger {
     display: none !important;
   }
+  // Hide the theme choice dropdown as it is unuseable without JavaScript.
+  #themeChoiceDropdown {
+    display: none !important;
+  }
 }
 
 // Add padding when the container is not fullwidth.
