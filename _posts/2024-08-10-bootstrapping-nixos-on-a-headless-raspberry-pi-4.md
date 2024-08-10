@@ -442,6 +442,7 @@ I have made some modifications below, marked with the 📝 emoji for easy identi
   # 📝 Add SSH access, but only using SSH keys, and to the NixOS user.
   services.openssh = {
     enable = true;
+    authorizedKeysInHomedir = false;  # Do not trust SSH keys in ~/.ssh/authorized_keys.
     settings = {
       PasswordAuthentication = false; # Disable password authentication.
       AllowUsers = [ "nixos" ];       # Allow only login via the "nixos" user.
