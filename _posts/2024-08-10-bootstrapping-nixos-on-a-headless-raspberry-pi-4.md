@@ -104,7 +104,7 @@ $ sudo mkdir /mnt/sd_card/home/nixos/.ssh
 Then write your SSH key to the `authorized_keys` file:
 
 ```
-$ echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDaVxct8yXJXG6iVNQ7hUhOapHivZRW01PKOk2NKsPjp arthur@dent" | sudo tee /mnt/sd_card/home/nixos/.ssh/authorized_keys
+$ sudo echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDaVxct8yXJXG6iVNQ7hUhOapHivZRW01PKOk2NKsPjp arthur@dent" | sudo tee /mnt/sd_card/home/nixos/.ssh/authorized_keys
 ```
 
 You can add an additional key by appending to the `authorized_keys` file:
