@@ -18,3 +18,10 @@
         @include syntax-highlighting.github-light;
     }
 }
+
+// Center images inside posts.
+main .content img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
