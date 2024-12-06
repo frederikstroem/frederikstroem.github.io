@@ -2,6 +2,7 @@
 layout: post
 
 title: Bootstrapping NixOS on a headless Raspberry Pi 4
+last_modified: 2024-12-06
 ---
 *I dedicate this journal post to the public domain under the [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/). I waive all rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.*
 
@@ -104,13 +105,13 @@ $ sudo mkdir /mnt/sd_card/home/nixos/.ssh
 Then write your SSH key to the `authorized_keys` file:
 
 ```
-$ sudo echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDaVxct8yXJXG6iVNQ7hUhOapHivZRW01PKOk2NKsPjp arthur@dent" | sudo tee /mnt/sd_card/home/nixos/.ssh/authorized_keys
+$ echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDaVxct8yXJXG6iVNQ7hUhOapHivZRW01PKOk2NKsPjp arthur@dent" | sudo tee /mnt/sd_card/home/nixos/.ssh/authorized_keys
 ```
 
 You can add an additional key by appending to the `authorized_keys` file:
 
 ```
-$ sudo echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7l0H36wYg3Y7X0DFapBrdQZ4u/+NrRo/0fB5gCBky6 ford@prefect" | sudo tee -a /mnt/sd_card/home/nixos/.ssh/authorized_keys
+$ echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7l0H36wYg3Y7X0DFapBrdQZ4u/+NrRo/0fB5gCBky6 ford@prefect" | sudo tee -a /mnt/sd_card/home/nixos/.ssh/authorized_keys
 ```
 
 Lastly, before unmounting the SD card, we need to fix the ownership and file permissions of the newly created directory and file. The default `nixos` user has UID `1000` and the users' primary group is the `users` group with GID `100`. So to fix the ownership, run a recursive `chown` command:
