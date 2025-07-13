@@ -1,0 +1,29 @@
+#!/usr/bin/env nu
+
+# Pre-commit hook to ensure Sass and JavaScript files are compiled and up to date before committing.
+
+print $"(ansi cyan)Running Sass and JavaScript compilation pre-commit hook…(ansi reset)"
+print ""
+
+sass-compile
+js-compile
+
+# Check if any files changed after compilation.
+let changed_files = (git diff --name-only | lines)
+
+# Filter to only compiled output files (*.min.css and *.min.js).
+let changed_compiled_files = ($changed_files | where {|file|
+    ($file | str ends-with ".min.css") or ($file | str ends-with ".min.js")
+})
+
+print ""
+if ($changed_compiled_files | length) > 0 {
+    print $"(ansi red_bold)❌ Compilation resulted in changes to compiled files:(ansi reset)"
+    $changed_compiled_files | each {|file| print $"  (ansi yellow)- ($file)(ansi reset)"}
+    print ""
+    print $"(ansi blue)Please stage these compiled files and commit again.(ansi reset)"
+    exit 1
+} else {
+    print $"(ansi green_bold)✅ All compiled files are up to date.(ansi reset)"
+    exit 0
+}

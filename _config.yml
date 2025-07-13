@@ -1,5 +1,5 @@
 title: Frederik Holm Strøm
-description: My name is Frederik Holm Strøm, and I am currently studying Software Engineering at The University of Southern Denmark.
+description: Rust developer based in Copenhagen, working as a Full Stack Developer at Factbird.
 timezone: Etc/UTC
 
 email: contact@frederikstroem.com
@@ -24,12 +24,16 @@ defaults:
       image: true
 
 exclude:
-  - README.md
   - Gemfile
   - Gemfile.lock
+  - README.md
+  - devenv.lock
+  - devenv.nix
+  - devenv.yaml
+  - git_hooks
   - node_modules/
-  - package.json
   - package-lock.json
+  - package.json
   - renovate.json
 
 plugins:

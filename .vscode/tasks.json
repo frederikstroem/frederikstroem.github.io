@@ -2,13 +2,11 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Serve Jekyll Site",
+      "label": "devenv up",
       "type": "shell",
-      "command": "bundle",
+      "command": "devenv",
       "args": [
-        "exec",
-        "jekyll",
-        "serve"
+        "up"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
@@ -16,83 +14,43 @@
       "group": {
         "kind": "build"
       },
-      "detail": "Serve the Jekyll site locally"
-    },
-    {
-      "label": "Remove main.min.js",
-      "type": "shell",
-      "command": "rm",
-      "args": [
-        "-f",
-        "main.min.js"
-      ],
-      "options": {
-        "cwd": "${workspaceFolder}/assets/js"
-      },
-      "detail": "Delete main.min.js if it exists"
+      "detail": "Start all devenv processes"
     },
     {
       "label": "Compile JS with Google Closure Compiler",
       "type": "shell",
-      "command": "google-closure-compiler",
-      "args": [
-        "--compilation_level", "SIMPLE",
-        "--js", "**.js",
-        "--js_output_file", "main.min.js"
-      ],
+      "command": "js-compile",
       "options": {
-        "cwd": "${workspaceFolder}/assets/js"
+        "cwd": "${workspaceFolder}"
       },
       "group": {
         "kind": "build"
       },
-      "dependsOn": "Remove main.min.js",
-      "detail": "Compile all JS files into a single main.min.js file using Google Closure Compiler"
+      "detail": "Compile all JS files into a single main.min.js file using Google Closure Compiler via devenv script"
     },
     {
       "label": "Compile Sass",
       "type": "shell",
-      "command": "npx",
-      "args": [
-        "sass",
-        "--load-path", "node_modules/",
-        "--no-source-map",
-        "--style", "compressed",
-        "assets/css/404.scss:assets/css/404.min.css",
-        "assets/css/home.scss:assets/css/home.min.css",
-        "assets/css/journal.scss:assets/css/journal.min.css",
-        "assets/css/post.scss:assets/css/post.min.css"
-      ],
+      "command": "sass-compile",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "group": {
         "kind": "build"
       },
-      "detail": "Compile Sass files using Dart Sass via npx"
+      "detail": "Compile Sass files using Dart Sass via devenv script"
     },
     {
       "label": "Watch Sass",
       "type": "shell",
-      "command": "npx",
-      "args": [
-        "sass",
-        "--load-path", "node_modules/",
-        "--no-source-map",
-        "--style", "compressed",
-        "--watch",
-        "assets/css/404.scss:assets/css/404.min.css",
-        "assets/css/home.scss:assets/css/home.min.css",
-        "assets/css/journal.scss:assets/css/journal.min.css",
-        "assets/css/post.scss:assets/css/post.min.css"
-      ],
+      "command": "sass-watch",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "group": {
         "kind": "build"
       },
-      "detail": "Compile and watch Sass files using Dart Sass via npx"
+      "detail": "Watch and compile Sass files using Dart Sass via devenv script"
     },
     {
       "label": "Compile Everything",
@@ -104,7 +62,7 @@
         "kind": "build",
         "isDefault": true
       },
-      "detail": "Compile both JS and Sass files"
+      "detail": "Compile both JS and Sass files via devenv scripts"
     }
   ]
 }
