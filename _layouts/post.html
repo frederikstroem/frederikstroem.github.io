@@ -11,6 +11,6 @@ stylesheet_path: "/assets/css/post.min.css"
 
 <div class="container container-touch-padding-fix mb-6">
     <div class="content">
-        {{ content }}
+        {% include anchor_headings.html html=content anchorBody='<i class="fas fa-link"></i>' anchorClass='header-anchor' %}
     </div>
 </div>

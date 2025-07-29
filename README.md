@@ -8,6 +8,7 @@ This repository contains the source code for my personal webpage: [frederikstroe
 **Third-party tools, libraries, and services used in this project:**
 - Served with [Jekyll](https://jekyllrb.com/).
 - Hosted on [GitHub Pages](https://pages.github.com/).
+- Header anchors provided by [allejo/jekyll-anchor-headings](https://github.com/allejo/jekyll-anchor-headings).
 - Icons provided by [Font Awesome](https://fontawesome.com/).
 - CSS styled using [Sass](https://sass-lang.com/), [Bulma](https://bulma.io/), and [Rouge](https://rouge.jneen.net/).
 - JavaScript compiled with [Google Closure Compiler](https://developers.google.com/closure/compiler/).

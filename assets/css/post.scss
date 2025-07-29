@@ -25,3 +25,35 @@ main .content img {
     margin-left: auto;
     margin-right: auto;
 }
+
+// Header anchor links.
+.content {
+    h1, h2, h3, h4, h5, h6 {
+        position: relative;
+
+        .header-anchor {
+            position: absolute;
+            left: -1.5em;
+            color: var(--bulma-text-45);
+            text-decoration: none;
+            font-size: 0.8em;
+            padding: 0.2em;
+            border-radius: 0.25em;
+
+            &:hover, &:active {
+                color: var(--bulma-link)
+            }
+        }
+    }
+}
+@media (max-width: 1049px) {
+    .content {
+        h1, h2, h3, h4, h5, h6 {
+            margin-left: 1.1em;
+
+            .header-anchor {
+                left: -1.6em;
+            }
+        }
+    }
+}
