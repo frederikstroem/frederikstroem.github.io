@@ -127,6 +127,12 @@ $text: hsl(iv.$scheme-h, iv.$scheme-s, $text-l);
   }
 }
 
+// Restore white color for selected navbar links
+// after it was changed following a Bulma upgrade.
+.navbar .navbar-item.is-selected {
+  color: white !important;
+}
+
 // Make website usable without JavaScript.
 // https://developer.mozilla.org/en-US/docs/Web/CSS/@media/scripting
 @media (scripting: none) {
