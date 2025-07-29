@@ -34,6 +34,8 @@ main .content img {
         .header-anchor {
             position: absolute;
             left: -1.5em;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--bulma-text-45);
             text-decoration: none;
             font-size: 0.8em;
