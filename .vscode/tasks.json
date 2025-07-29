@@ -63,6 +63,21 @@
         "isDefault": true
       },
       "detail": "Compile both JS and Sass files via devenv scripts"
+    },
+    {
+      "label": "Journal Dates Sync (Debug)",
+      "type": "shell",
+      "command": "journal-dates-sync",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "NU_LOG_LEVEL": "DEBUG"
+        }
+      },
+      "group": {
+        "kind": "build"
+      },
+      "detail": "Run devenv journal-dates-sync script with debug logging"
     }
   ]
 }
