@@ -12,3 +12,9 @@ This repository contains the source code for my personal webpage: [frederikstroe
 - CSS styled using [Sass](https://sass-lang.com/), [Bulma](https://bulma.io/), and [Rouge](https://rouge.jneen.net/).
 - JavaScript compiled with [Google Closure Compiler](https://developers.google.com/closure/compiler/).
 - Development environment managed with [direnv](https://direnv.net/) and [devenv](https://devenv.sh/) using [Nix](https://en.wikipedia.org/wiki/Nix_(package_manager)).
+
+## License
+This repository contains both code and content, each with different licensing:
+
+- **Code & Scripts** (development tools, build scripts, configurations): [MIT License](LICENSE)
+- **Content** (posts, writing, creative work): Some items include a license; others are just shared as-is.
