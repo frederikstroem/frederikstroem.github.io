@@ -1,29 +1,145 @@
 #!/usr/bin/env nu
 
-# Pre-commit hook to ensure Sass and JavaScript files are compiled and up to date before committing.
+def get_unstaged_files []: nothing -> list<string> {
+    git diff --name-only | lines
+}
 
-print $"(ansi cyan)Running Sass and JavaScript compilation pre-commit hook…(ansi reset)"
-print ""
+# Define pre-commit jobs that can be run concurrently.
+# Each job is assumed to not interfere with others.
+let job_configs = [
+    {
+        name: "Compile Sass files"
+        job: {
+            try {
+                sass-compile
+            } catch {
+                error make {
+                    msg: "Sass complilation failed"
+                }
+            }
 
-sass-compile
-js-compile
+            # Filter only compiled output files (*.min.css).
+            let unstaged_files = (get_unstaged_files | where {|file|
+                $file | str ends-with ".min.css"
+            })
 
-# Check if any files changed after compilation.
-let changed_files = (git diff --name-only | lines)
+            # Determine if this job should block the commit.
+            let blocking = (($unstaged_files | length) > 0)
 
-# Filter to only compiled output files (*.min.css and *.min.js).
-let changed_compiled_files = ($changed_files | where {|file|
-    ($file | str ends-with ".min.css") or ($file | str ends-with ".min.js")
+            {
+                blocking: $blocking
+                unstaged_files: $unstaged_files
+            }
+        }
+    }
+    {
+        name: "Compile JavaScript files"
+        job: {
+            try {
+                js-compile
+            } catch {
+                error make {
+                    msg: "JavaScript compilation failed"
+                }
+            }
+
+            # Filter only compiled output files (*.min.js).
+            let unstaged_files = (get_unstaged_files | where {|file|
+                $file | str ends-with ".min.js"
+            })
+
+            # Determine if this job should block the commit.
+            let blocking = (($unstaged_files | length) > 0)
+
+            {
+                blocking: $blocking
+                unstaged_files: $unstaged_files
+            }
+        }
+    }
+    {
+        name: "Update journal dates"
+        job: {
+            journal-dates-sync
+
+            # Get unstaged files that were modified by the journal-dates-sync script (/_posts/*.md).
+            let unstaged_files = (get_unstaged_files | where {|file|
+                ($file | str starts-with "_posts/") and ($file | str ends-with ".md")
+            })
+
+            # Determine if this job should block the commit.
+            let blocking = (($unstaged_files | length) > 0)
+
+            {
+                blocking: $blocking
+                unstaged_files: $unstaged_files
+            }
+        }
+    }
+]
+
+# Execute jobs in parallel and handle their results.
+let results = ($job_configs | par-each { |config|
+    print $"Running pre-commit job: ($config.name)"
+    try {
+        let start_time = (date now)
+        let result = (do $config.job)
+        let duration = (date now) - $start_time
+
+        {
+            result: $result
+            name: $config.name
+            failed: false
+            duration: $duration
+            blocking: $result.blocking
+            unstaged_files: $result.unstaged_files?
+        }
+    } catch { |e|
+        {
+            name: $config.name
+            failed: true
+            error_msg: $e.msg
+            duration: null
+        }
+    }
 })
 
 print ""
-if ($changed_compiled_files | length) > 0 {
-    print $"(ansi red_bold)❌ Compilation resulted in changes to compiled files:(ansi reset)"
-    $changed_compiled_files | each {|file| print $"  (ansi yellow)- ($file)(ansi reset)"}
-    print ""
-    print $"(ansi blue)Please stage these compiled files and commit again.(ansi reset)"
+
+# Process results.
+mut failed_or_blocking_jobs: int = 0
+for result in $results {
+    if $result.failed? or $result.blocking? {
+        $failed_or_blocking_jobs += 1
+        if $result.failed? {
+            print $"(ansi red_bold)✗(ansi red) ($result.name) failed with error \"($result.error_msg)\"(ansi reset)"
+        } else {
+            let comment = if ($result.unstaged_files | length) > 0 {
+                $" due to unstaged files \(($result.unstaged_files | str join ', ')\)"
+            } else {
+                ""
+            }
+            print $"(ansi yellow_bold)⚠️(ansi yellow) ($result.name) is blocking($comment).(ansi reset)"
+        }
+    } else {
+        print $"(ansi green_bold)✓(ansi green) ($result.name) completed in ($result.duration)(ansi reset)"
+    }
+}
+
+print ""
+print $"(ansi cyan_bold)('Summary' | fill -a c -w 28)(ansi reset)"
+print $"('Total jobs:' | fill -a r -w 24)(ansi blue)(($job_configs | length) | fill -a r -w 3)(ansi reset)"
+print $"('Completed jobs:' | fill -a r -w 24)(ansi green)((($job_configs | length) - $failed_or_blocking_jobs ) | fill -a r -w 3)(ansi reset)"
+print $"('Failed or blocking jobs:' | fill -a r -w 24)(ansi red)($failed_or_blocking_jobs | fill -a r -w 3)(ansi reset)"
+print ""
+
+print -n "Overall status: "
+if $failed_or_blocking_jobs > 0 {
+    print $"(ansi green_underline)(ansi red_bold)BLOCKED(ansi reset)"
     exit 1
 } else {
-    print $"(ansi green_bold)✅ All compiled files are up to date.(ansi reset)"
+    print $"(ansi green_underline)(ansi green_bold)PASSED(ansi reset)"
     exit 0
 }
+
+print ""

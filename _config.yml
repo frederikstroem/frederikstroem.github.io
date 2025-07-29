@@ -30,11 +30,14 @@ exclude:
   - devenv.lock
   - devenv.nix
   - devenv.yaml
+  - flake.lock
+  - flake.nix
   - git_hooks
   - node_modules/
   - package-lock.json
   - package.json
   - renovate.json
+  - scripts/
 
 plugins:
   - jekyll-feed
