@@ -6,6 +6,8 @@ inputs:
     inputs:
       nixpkgs:
         follows: nixpkgs
+  parallel-git-hooks:
+    url: github:frederikstroem/parallel-git-hooks/main
 
 permittedInsecurePackages:
   - "openssl-1.1.1w"

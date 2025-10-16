@@ -10,6 +10,10 @@
     })
   ];
 
+  imports = [
+    inputs.parallel-git-hooks.devenvModule
+  ];
+
   packages = with pkgs; [
     nushell
     dart-sass
@@ -72,10 +76,6 @@
 
   tasks = {
 
-    "init:git-hooks" = {
-      exec = "./git_hooks/setup_git_hooks.sh";
-      after = [ "devenv:enterShell" ];
-    };
     "init:bundle" = {
       exec = "bundle install";
       after = [ "devenv:enterShell" ];
@@ -92,6 +92,31 @@
       exec = "npm update";
     };
 
+  };
+
+  parallel-git-hooks = {
+    enable = true;
+    # logLevel = "DEBUG";
+    hooks = [
+      {
+        name = "Compile Sass files";
+        cmd = "sass-compile";
+        # Filter only compiled output files (*.min.css).
+        fileFilter = ''\.min\.css$'';
+      }
+      {
+        name = "Compile JavaScript files";
+        cmd = "js-compile";
+        # Filter only compiled output files (*.min.js).
+        fileFilter = ''\.min\.js$'';
+      }
+      {
+        name = "Update journal dates";
+        cmd = "journal-dates-sync";
+        # Get unstaged files that were modified by the journal-dates-sync script (/_posts/*.md).
+        fileFilter = ''^_posts/.*\.md$'';
+      }
+    ];
   };
 
   enterShell = ''

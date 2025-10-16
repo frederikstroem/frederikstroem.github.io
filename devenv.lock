@@ -140,12 +140,28 @@
         "type": "github"
       }
     },
+    "parallel-git-hooks": {
+      "locked": {
+        "lastModified": 1760599033,
+        "owner": "frederikstroem",
+        "repo": "parallel-git-hooks",
+        "rev": "d438d7cc1eb84508e69ff06ef0f8c0a364aeb9a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "frederikstroem",
+        "ref": "main",
+        "repo": "parallel-git-hooks",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "devenv": "devenv",
         "git-hooks": "git-hooks",
         "nixpkgs": "nixpkgs",
         "nixpkgs-ruby": "nixpkgs-ruby",
+        "parallel-git-hooks": "parallel-git-hooks",
         "pre-commit-hooks": [
           "git-hooks"
         ]
