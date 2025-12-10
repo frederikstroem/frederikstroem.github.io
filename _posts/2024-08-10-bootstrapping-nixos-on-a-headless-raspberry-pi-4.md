@@ -2,7 +2,7 @@
 layout: post
 
 title: Bootstrapping NixOS on a headless Raspberry Pi 4
-last_modified: 2024-12-06
+last_modified: 2025-12-10
 ---
 *I dedicate this journal post to the public domain under the [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/). I waive all rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.*
 
@@ -11,7 +11,7 @@ last_modified: 2024-12-06
 ## Introduction
 I have started migrating several of my homelab servers, as well as some of my more appliance-focused systems, to NixOS. I have had good results with NixOS on my x86_64 systems; however, my experiences with ARM-based Raspberry Pi (RPi) systems have been more mixed. This is, however, to be expected, as the NixOS Wiki also states, ["The support level for ARM overall varies depending on the architecture and the specific ecosystems and boards."](https://web.archive.org/web/20240808055256/https://wiki.nixos.org/wiki/NixOS_on_ARM).
 
-I used to primarily build complete images that could be flashed to an SD card, allowing me to set up SSH keys and other configurations before booting the system. Building these images for the AArch64 architecture on an x86_64 system requires emulation, but once set up, I have generally had good success with Roberto Frenna's [NixOS Docker-based SD image builder](https://github.com/Robertof/nixos-docker-sd-image-builder) for both the RPi 3 and 4. However, I have encountered issues modifying the configuration on a running RPi 3 and then rebuilding on the device. I suspect the memory constraints of the RPi 3 might have been the issue, but I need to investigate further to be sure. This was also some time ago, so things might have changed. I have encountered no issues rebuilding RPi 4's with 8GB of RAM. Since I only own RPi 4s with 8GB of RAM, I have not tested the lower memory models.
+I used to primarily build complete images that could be flashed to an SD card, allowing me to set up SSH keys and other configurations before booting the system. Building these images for the AArch64 architecture on an x86_64 system requires emulation, but once set up, I have generally had good success with Roberto Frenna's [NixOS Docker-based SD image builder](https://github.com/Robertof/nixos-docker-sd-image-builder) for both the RPi 3 and 4. However, I have encountered issues modifying the configuration on a running RPi 3 and then rebuilding on the device. I suspect the memory constraints of the RPi 3 might have been the issue, but I need to investigate further to be sure. *(Edit 2025-12-10: If memory constrained on a NixOS system, consider remote builders, possibly coupled with cross-compilation.)* This was also some time ago, so things might have changed. I have encountered no issues rebuilding RPi 4's with 8GB of RAM. Since I only own RPi 4s with 8GB of RAM, I have not tested the lower memory models.
 
 The build times to create new images when using Frenna's tool can be a bit long, especially if new changes haven't been cached on the [cache.nixos.org](https://cache.nixos.org/) binary cache (see related [issue #33](https://github.com/Robertof/nixos-docker-sd-image-builder/issues/33)).
 
